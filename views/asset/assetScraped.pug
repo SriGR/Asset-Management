@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title Scrap Asset
+    link(rel='stylesheet', href='/styles/style.css')
+  body
+    h1 Scrap Asset
+    
+    form(action='/assets/scrap' method='POST')
+      div
+        label(for='assetId') Select Asset to Scrap
+        select(name='assetId' id='assetId')
+          each asset in assets
+            option(value=asset.id)= asset.assetName + ' (' + asset.assetNumber + ')'
+
+      div
+        button(type='submit') Scrap Asset
+
+    a(href='/assets').btn.btn-secondary Back to List

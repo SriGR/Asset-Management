@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    title Employee List
+    link(rel='stylesheet', href='/styles/style.css')
+    // DataTables CSS
+    link(rel='stylesheet', href='https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css')
+  body
+    h1 Employee List
+    a(href="/employees/add").btn.btn-primary Add Employee
+    table.table.table-bordered#employeeTable
+      thead
+        tr
+          th ID
+          th Name
+          th Branch
+          th Actions
+      tbody
+        each employee in employees
+          tr
+            td= employee.id
+            td= employee.employeeName
+            td= employee.branch
+            td
+              a.btn.btn-sm.btn-warning(href=`/employees/edit/${employee.id}`) Edit
+    
+    // DataTables JS
+    script(src='https://code.jquery.com/jquery-3.6.0.min.js')
+    script(src='https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js')
+    script.
+      $(document).ready(function() {
+        $('#employeeTable').DataTable();  // Initialize DataTable for the table with id 'employeeTable'
+      });

@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title Stock View
+    link(rel='stylesheet', href='/styles/style.css')
+  body
+    h1 Stock View
+    table.table.table-bordered
+      thead
+        tr
+          th Asset ID
+          th Asset Name
+          th Asset Number
+          th Branch
+          th Purchase Amount
+          th Status
+      tbody
+        each asset in availableAssets
+          tr
+            td= asset.id
+            td= asset.assetName
+            td= asset.assetNumber
+            td= asset.branchName
+            td= asset.purchaseAmount
+            td= asset.status
+    // Footer section to display branch totals and total value
+    footer
+      h3 Branch Totals
+      table.table.table-bordered
+        thead
+          tr
+            th Branch
+            th Total Count
+            th Total Value
+        tbody
+            each branch in Object.keys(branchTotals) 
+              tr
+                td= branch
+                td= branchTotals[branch].totalCount
+                td= '$' + branchTotals[branch].totalValue.toFixed(2)
+
+    a(href='/assets').btn.btn-secondary Back to List

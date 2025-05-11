@@ -1,0 +1,16 @@
+doctype html
+html
+head
+  title Employee Form
+  link(rel='stylesheet', href='/styles/style.css')
+
+  body
+    h1 Update Employee
+  form(method="post", action=`/employees/edit/${employee.id}`)
+    div.form-group
+      label Name
+      input.form-control(type="text", name="employeeName", value=employee.employeeName, required)
+    div.form-group
+      label Branch
+      input.form-control(type="text", name="branch", value=employee.branch)
+    button.btn.btn-success(type="submit") Update

@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title Asset Categories
+    link(rel='stylesheet', href='/styles/style.css')
+    // DataTables CSS
+    link(rel='stylesheet', href='https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css')
+  body
+    h1 Asset Categories
+    a(href='/assetCategories/add').btn.btn-primary Add New Category
+    table.table.table-bordered#categoryTable
+      thead
+        tr
+          th ID
+          th Name
+          th Actions
+      tbody
+        each assetCategory in assetCategories
+          tr
+            td= assetCategory.id
+            td= assetCategory.categoryName
+            td
+              a.btn.btn-sm.btn-warning(href=`/assetCategories/edit/${assetCategory.id}`) Edit
+              a.btn.btn-sm.btn-danger(href=`/assetCategories/delete/${assetCategory.id}`) Delete
+
+    script(src='https://code.jquery.com/jquery-3.6.0.min.js')
+    script(src='https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js')
+    script.
+      $(document).ready(function() {
+        $('#categoryTable').DataTable(); // Initialize DataTable for asset categories table
+      });

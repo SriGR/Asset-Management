@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title Edit Asset Category
+    link(rel='stylesheet', href='/styles/style.css')
+  body
+    h1 Edit Asset Category
+    form(action=`/assetCategories/edit/${assetCategory.id}`, method='POST')
+      div
+        label(for='categoryName') Category Name:
+        input(type='text', name='categoryName', id='name', value=assetCategory.categoryName, required=true)
+      div
+        button(type='submit').btn.btn-primary Update Category
+    a(href='/assetCategories').btn.btn-secondary Go Back

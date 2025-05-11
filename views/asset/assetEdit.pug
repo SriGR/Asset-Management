@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    title Edit Asset
+    link(rel='stylesheet', href='/styles/style.css')
+  body
+    h1 Edit Asset
+    form(action=`/assets/edit/${asset.id}` method='POST')
+      div.form-group
+        label(for='assetName') Asset Name
+        input(type='text' name='assetName' value=asset.assetName required)
+      div.form-group
+        label(for='assetNumber') Asset Number
+        input(type='text' name='assetNumber' value=asset.assetNumber required)
+      div.form-group
+        label(for='purchaseAmount') Purchase Price
+        input(type='number' name='purchaseAmount' value=asset.purchaseAmount required)
+      div.form-group
+        label(for='branchName') Branch
+        input(type='text' name='branchName' value=asset.branchName required)
+      //-  div.form-group
+      //-   label(for='status') Status
+      //-   select(name='status')
+      //-     option(value='Available' selected=asset.status == 'Available') Available
+      //-     option(value='Issued' selected=asset.status == 'Issued') Issued
+      //-     option(value='Returned' selected=asset.status == 'Returned') Returned
+      //-     option(value='Scrapped' selected=asset.status == 'Scrapped') Scrapped
+      div.form-group
+        label(for='assetCondition') Condition
+        select(name='assetCondition')
+          option(value='New' selected=asset.assetCondition == 'New') New
+          option(value='Used' selected=asset.assetCondition == 'Used') Used
+          option(value='Damaged' selected=asset.assetCondition == 'Damaged') Damaged
+      div.form-group
+        label(for='categoryId') Category
+        select(name='categoryId' required)
+          each category in categories
+            option(value=category.id selected=asset.categoryId == category.id) #{category.categoryName}
+      div.form-group
+        button(type='submit') Update Asset
+    a(href='/assets').btn.btn-secondary Back to List

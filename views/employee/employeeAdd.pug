@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h1 Add Employee
+  form(method="post", action="/employees/add")
+    div.form-group
+      label Name
+      input.form-control(type="text", name="employeeName", required)
+    div.form-group
+      label Branch
+      input.form-control(type="text", name="branch")
+    button.btn.btn-success(type="submit") Save

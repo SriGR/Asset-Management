@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    title Asset List
+    link(rel='stylesheet', href='/styles/style.css')
+    link(rel='stylesheet', href='https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css')
+  body
+    h1 Asset List
+    a(href="/assets/add").btn.btn-primary Add Asset
+
+    table.table.table-bordered#assetTable
+      thead
+        tr
+          th ID
+          th Asset Name
+          th Asset No
+          th Category
+          th Purchase Amount
+          th Branch Name
+          th Status
+          th Asset Condition
+          th Assigned To
+          th Scrapped
+          th Return Reason
+          th Actions
+      tbody
+        each asset in assets
+          tr
+            td= asset.id
+            td= asset.assetName
+            td= asset.assetNumber
+            td= asset.AssetCategory ? asset.AssetCategory.categoryName : '—'
+            td= asset.purchaseAmount
+            td= asset.branchName
+            td= asset.status
+            td= asset.assetCondition
+            td= asset.Employee ? asset.Employee.employeeName : '—'
+            td= asset.isScrapped ? 'Yes' : 'No'
+            td= asset.returnReason || '—'
+            td
+              a.btn.btn-sm.btn-warning(href=`/assets/edit/${asset.id}`) Edit
+              a.btn.btn-sm.btn-danger(href=`/assets/delete/${asset.id}`) Delete
+
+    script(src='https://code.jquery.com/jquery-3.6.0.min.js')
+    script(src='https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js')
+    script.
+      $(document).ready(function() {
+        $('#assetTable').DataTable();
+      });

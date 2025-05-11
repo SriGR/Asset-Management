@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    title Add New Asset
+    link(rel='stylesheet', href='/styles/style.css')
+  body
+    h1 Add New Asset
+    form(action='/assets/add' method='POST')
+      div.form-group
+        label(for='assetName') Asset Name
+        input(type='text' name='assetName' required)
+      div.form-group
+        label(for='assetNumber') Asset Number
+        input(type='text' name='assetNumber' required)
+      div.form-group
+        label(for='purchaseAmount') Purchase Amount
+        input(type='number' name='purchaseAmount' required)
+      div.form-group
+        label(for='branchName') Branch Name
+        input(type='text' name='branchName' required)
+      //- div.form-group
+      //-   label(for='status') Status
+      //-   select(name='status')
+      //-     option(value='Available') Available
+      //-     option(value='Issued') Issued
+      //-     option(value='Returned') Returned
+      //-     option(value='Scrapped') Scrapped
+      div.form-group
+        label(for='assetCondition') Asset Condition
+        select(name='assetCondition')
+          option(value='New') New
+          option(value='Used') Used
+          option(value='Damaged') Damaged
+      div.form-group
+        label(for='categoryId') Category
+        select(name='categoryId' required)
+          each category in categories
+            option(value=category.id) #{category.categoryName}
+      div.form-group
+              button(type='submit') Add Asset
+    a(href='/assets').btn.btn-secondary Back to List  
