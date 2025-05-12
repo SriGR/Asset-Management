@@ -8,11 +8,8 @@ exports.stockView = async (req, res) => {
         });
         const branchTotals = availableAssets.reduce((acc, asset) => {
             const branchName = asset.branchName;
-            console.log("Current asset:", asset);
-            console.log("Current branch:", branchName);
 
             if (!acc[branchName]) {
-                console.log("Initializing branch:", branchName);
                 acc[branchName] = { totalCount: 1, totalValue: parseFloat(asset.purchaseAmount) };
             } else {
                 acc[branchName].totalCount += 1;

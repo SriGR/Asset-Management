@@ -11,7 +11,6 @@ exports.addForm = (req, res) => {
 };
 
 exports.add = async (req, res) => {
-    console.log('req.body', req)
     const { employeeName, branch } = req.body;
     await Employee.create({
         employeeName,

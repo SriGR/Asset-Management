@@ -3,6 +3,7 @@ const { Op } = require('sequelize');
 const Asset = db.Asset;
 const Employee = db.Employee;
 const AssetCategory = db.AssetCategory;
+const AssetHistory = db.AssetHistory
 
 exports.list = async (req, res) => {
     try {
@@ -20,7 +21,6 @@ exports.list = async (req, res) => {
 exports.addForm = async (req, res) => {
     try {
         const categories = await AssetCategory.findAll();
-        console.log(categories, "categories")
         const employees = await Employee.findAll();
         res.render('asset/assetForm', { categories, employees });
     } catch (error) {
@@ -45,7 +45,7 @@ exports.add = async (req, res) => {
             return res.status(400).send('All required fields must be filled');
         }
 
-        await Asset.create({
+        const newAsset = await Asset.create({
             assetName,
             assetNumber,
             purchaseAmount,
@@ -56,6 +56,13 @@ exports.add = async (req, res) => {
             categoryId,
             returnReason: null,
             isScrapped: false
+        });
+
+        await AssetHistory.create({
+            assetId: newAsset.id,
+            action: 'Purchased',
+            description: `Asset purchased on ${new Date().toLocaleDateString()}`,
+            date: Date.now()
         });
 
         res.redirect('/assets');
@@ -134,7 +141,6 @@ exports.delete = async (req, res) => {
 exports.issue = async (req, res) => {
     try {
         const availableAssets = await Asset.findAll({ where: { status: 'Available' } });
-        console.log('availableAssets', availableAssets)
         const employees = await Employee.findAll();
 
         res.render('asset/assetIssued', { availableAssets, employees });
@@ -163,6 +169,12 @@ exports.issueSave = async (req, res) => {
         asset.assignedTo = employeeId;
         await asset.save();
 
+        await AssetHistory.create({
+            assetId: asset.id,
+            action: 'Issued',
+            description: `Asset Issued to ${employee.name}`,
+            date: Date.now()
+        });
         res.redirect('/assets');
     } catch (error) {
         console.error(error);
@@ -199,6 +211,12 @@ exports.returnSave = async (req, res) => {
         asset.returnReason = returnReason;
         await asset.save();
 
+        await AssetHistory.create({
+            assetId: asset.id,
+            action: 'Returned',
+            description: `Asset Returned for ${returnReason}`,
+            date: Date.now()
+        });
 
         res.redirect('/assets');
     } catch (error) {
@@ -233,6 +251,13 @@ exports.scrapSave = async (req, res) => {
         asset.isScrapped = true;
         asset.status = 'Scrapped';
         await asset.save();
+
+        await AssetHistory.create({
+            assetId: asset.id,
+            action: 'Scraped',
+            description: `Asset Scraped`,
+            date: Date.now()
+        });
 
         res.redirect('/assets');
     } catch (error) {

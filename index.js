@@ -9,6 +9,7 @@ db.sequelize = sequelize;
 db.Employee = require('./models/employee')(sequelize, Sequelize.DataTypes);
 db.AssetCategory = require('./models/assetCategory')(sequelize, Sequelize.DataTypes);
 db.Asset = require('./models/asset')(sequelize, Sequelize.DataTypes);
+db.AssetHistory = require('./models/AssetHistory')(sequelize, Sequelize.DataTypes);
 
 Object.keys(db).forEach((modelName) => {
     if (db[modelName].associate) {
