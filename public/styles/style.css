@@ -1,9 +1,9 @@
-/* Basic body and layout styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #fff;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .container {
@@ -41,7 +41,6 @@ select {
   border-radius: 4px;
 }
 
-/* Specific styles for purchasePrice */
 input[type="number"] {
   width: 100%;
   padding: 8px;
@@ -50,13 +49,11 @@ input[type="number"] {
   border-radius: 4px;
 }
 
-/* Specific styles for dropdowns (condition) */
 select {
   background-color: #fff;
   border: 1px solid #ddd;
 }
 
-/* Button styles */
 .btn {
   display: inline-block;
   padding: 10px 15px;
@@ -83,44 +80,41 @@ select {
   padding: 5px 10px;
 }
 
-/* Table styles */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 10px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-th, td {
-  padding: 12px 15px;
+th,
+td {
+  padding: 8px 12px;
   text-align: left;
   border: 1px solid #ddd;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 th {
-  background-color: #007bff;
-  color: white;
+  background-color: #ebebeb;
+  color: #070707;
 }
 
 td {
-  background-color: #f9f9f9;
+  background-color: #fff;
+  color: #4b4b4b;
+  font-weight: 400;
+  font-size: 13px;
 }
 
 tr:hover {
   background-color: #f1f1f1;
 }
 
-tbody tr:nth-child(odd) {
-  background-color: #f9f9f9;
-}
-
-tbody tr:nth-child(even) {
-  background-color: #f1f1f1;
-}
-
-/* Action button in table */
 a.btn-warning {
   background-color: #ffc107;
   color: #fff;
@@ -178,17 +172,11 @@ a.btn-secondary {
 a.btn-secondary:hover {
   background-color: #5a6268;
 }
-/* Additional footer styles */
+
 footer {
   margin-top: 30px;
   padding: 10px;
-  background-color: #f8f9fa;
-  border-top: 2px solid #ddd;
-}
-
-footer h3 {
-  text-align: center;
-  color: #333;
+  background-color: #fff;
 }
 
 footer table {
@@ -196,11 +184,28 @@ footer table {
   margin-top: 20px;
 }
 
-footer td, footer th {
+footer td,
+footer th {
   text-align: center;
 }
 
 footer th {
-  background-color: #007bff;
-  color: white;
+  background-color: #ebebeb;
+  color: #070707;
+}
+
+.tableTitle {
+  font-size: 14px;
+  text-align: left;
+  font-weight: 500;
+  background: #c6d1ff;
+  padding: 6px 12px;
+  border-radius: 2px;
+}
+
+.pageParentDiv {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  padding: 10px;
 }
