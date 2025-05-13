@@ -24,8 +24,9 @@ h1 {
 }
 
 label {
-  display: block;
-  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 input[type="text"],
@@ -80,40 +81,7 @@ select {
   padding: 5px 10px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
 
-th,
-td {
-  padding: 8px 12px;
-  text-align: left;
-  border: 1px solid #ddd;
-  font-weight: 500;
-  font-size: 14px;
-}
-
-th {
-  background-color: #ebebeb;
-  color: #070707;
-}
-
-td {
-  background-color: #fff;
-  color: #4b4b4b;
-  font-weight: 400;
-  font-size: 13px;
-}
-
-tr:hover {
-  background-color: #f1f1f1;
-}
 
 a.btn-warning {
   background-color: #ffc107;
@@ -173,39 +141,114 @@ a.btn-secondary:hover {
   background-color: #5a6268;
 }
 
-footer {
-  margin-top: 30px;
-  padding: 10px;
-  background-color: #fff;
-}
 
-footer table {
+table {
   width: 100%;
-  margin-top: 20px;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-footer td,
-footer th {
-  text-align: center;
+th,
+td {
+  padding: 8px 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+  font-weight: 500;
+  font-size: 14px;
 }
 
-footer th {
+th {
   background-color: #ebebeb;
   color: #070707;
+}
+
+td {
+  background-color: #fff;
+  color: #4b4b4b;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
 }
 
 .tableTitle {
   font-size: 14px;
   text-align: left;
   font-weight: 500;
-  background: #c6d1ff;
+  background: #80008040;
   padding: 6px 12px;
   border-radius: 2px;
 }
 
 .pageParentDiv {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.sideBarSection {
+  width: 150px;
+  height: 100%;
+  background-color: #ebebeb;
+  color: #070707;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pageRenderSection {
+  width: calc(100% - 150px);
+  height: 100%;
+  padding: 10px;
+}
+
+.sideBarHeadSec {
+  font-size: 16px;
+  font-weight: 500;
+  height: 20px;
+  border-bottom: 2px solid #171717;
+  padding: 6px 6px;
+}
+
+.sideBarListDiv {
+  height: calc(100% - 100px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.sidebarListUlstyle {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  list-style: none !important;
+  padding: 0px 6px;
+}
+
+.activeList {
+  color: purple !important;
+  text-decoration: none;
+}
+
+li {
+  cursor: pointer;
+}
+
+.NonActiveList {
+  text-decoration: none;
+  color: #070707;
 }

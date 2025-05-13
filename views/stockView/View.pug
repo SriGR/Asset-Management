@@ -4,10 +4,24 @@ html
     title Stock View
     link(rel='stylesheet', href='/styles/style.css')
   body
+
+  
     div.pageParentDiv
+     div.sideBarSection
+      div.sideBarHeadSec
+        | KT Telematic 
+      div.sideBarListDiv 
+       ul.sidebarListUlstyle
+        li: a(href='/home').activeList Home
+        li: a(href='/assets').NonActiveList Asset
+        li: a(href='/asset-category').NonActiveList Asset Category
+        li: a(href='/asset-history').NonActiveList Asset History
+        li: a(href='/employee').NonActiveList Employee
+        li: a(href='/issue-asset').NonActiveList Issue Asset
+        li: a(href='/return-asset').NonActiveList Return Asset
+        li: a(href='/scrap-asset').NonActiveList Scrap Asset
+     div.pageRenderSection
       span.tableTitle Stock View
-      
-      //- First Table: Stock View
       div.tableContainer
         table.table.table-bordered
           thead
@@ -28,7 +42,6 @@ html
                 td= asset.purchaseAmount
                 td= asset.status
 
-      //- Second Table: Branch Totals
       span.tableTitle Branch Totals
       div.tableContainer
         table.table.table-bordered
@@ -44,4 +57,3 @@ html
                 td= branchTotals[branch].totalCount
                 td= '$' + branchTotals[branch].totalValue.toFixed(2)
 
-      a(href='/assets').btn.btn-secondary Back to List
