@@ -1,17 +1,14 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize(
-    'postgresql://postgres:Sree%409080427619@db.boygjjcqhnhnwwscpfup.supabase.co:5432/postgres',
-    {
-        dialect: 'postgres',
-        dialectOptions: {
-            ssl: {
-                require: true,
-                rejectUnauthorized: false,
-            },
-        },
-    }
-);
+const sequelize = new Sequelize('postgresql://postgres:Sree%409080427619@db.boygjjcqhnhnwwscpfup.supabase.co:5432/postgres', {
+    host: 'db.boygjjcqhnhnwwscpfup.supabase.co',
+    dialect: 'postgres',
+    port: 5432,
+    dialectOptions: {
+        family: 4
+    },
+});
+
 
 sequelize.authenticate()
     .then(() => {
