@@ -252,3 +252,56 @@ li {
   text-decoration: none;
   color: #070707;
 }
+
+.addBtnSection {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 10px;
+}
+
+.AddBtn {
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: purple;
+  color: #fff;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.ActionSection {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 6px;
+}
+
+.EditBtn {
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: orange;
+  color: #fff;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.DeleteBtn {
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: red;
+  color: #fff;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.dataTables_wrapper .dataTables_info {
+  display: none;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0px !important;
+  font-size: 14px !important;
+}

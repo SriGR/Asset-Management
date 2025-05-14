@@ -6,28 +6,45 @@ html
     // DataTables CSS
     link(rel='stylesheet', href='https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css')
   body
-    h1 Employee List
-    a(href="/employees/add").btn.btn-primary Add Employee
-    table.table.table-bordered#employeeTable
-      thead
-        tr
-          th ID
-          th Name
-          th Branch
-          th Actions
-      tbody
-        each employee in employees
-          tr
-            td= employee.id
-            td= employee.employeeName
-            td= employee.branch
-            td
-              a.btn.btn-sm.btn-warning(href=`/employees/edit/${employee.id}`) Edit
-    
-    // DataTables JS
-    script(src='https://code.jquery.com/jquery-3.6.0.min.js')
-    script(src='https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js')
-    script.
-      $(document).ready(function() {
-        $('#employeeTable').DataTable();  // Initialize DataTable for the table with id 'employeeTable'
-      });
+    div.pageParentDiv
+     div.sideBarSection
+      div.sideBarHeadSec
+        | KT Telematic 
+      div.sideBarListDiv 
+       ul.sidebarListUlstyle
+        li: a(href='/').NonActiveList Home
+        li: a(href='/assets').NonActiveList Asset
+        li: a(href='/assetCategories').NonActiveList Asset Category
+        li: a(href='/assetHistory').NonActiveList Asset History
+        li: a(href='/employees').activeList Employee
+        li: a(href='/assets/issue').NonActiveList Issue Asset
+        li: a(href='/assets/return').NonActiveList Return Asset
+        li: a(href='/assets/scrap').NonActiveList Scrap Asset
+     div.pageRenderSection
+
+      div.addBtnSection
+        a(href="/employees/add").AddBtn Add Employee
+      div
+        table.table.table-bordered#employeeTable
+          thead
+            tr
+              th ID
+              th Name
+              th Branch
+              th Actions
+          tbody
+            each employee in employees
+              tr
+                td= employee.id
+                td= employee.employeeName
+                td= employee.branch
+                td.ActionSection
+                  a.EditBtn(href=`/employees/edit/${employee.id}`) Edit
+        
+        // DataTables JS
+        script(src='https://code.jquery.com/jquery-3.6.0.min.js')
+        script(src='https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js')
+        script.
+          $(document).ready(function() {
+            $('#employeeTable').DataTable();  // Initialize DataTable for the table with id 'employeeTable'
+          });

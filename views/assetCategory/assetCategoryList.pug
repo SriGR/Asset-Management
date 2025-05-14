@@ -6,26 +6,43 @@ html
     // DataTables CSS
     link(rel='stylesheet', href='https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css')
   body
-    h1 Asset Categories
-    a(href='/assetCategories/add').btn.btn-primary Add New Category
-    table.table.table-bordered#categoryTable
-      thead
-        tr
-          th ID
-          th Name
-          th Actions
-      tbody
-        each assetCategory in assetCategories
-          tr
-            td= assetCategory.id
-            td= assetCategory.categoryName
-            td
-              a.btn.btn-sm.btn-warning(href=`/assetCategories/edit/${assetCategory.id}`) Edit
-              a.btn.btn-sm.btn-danger(href=`/assetCategories/delete/${assetCategory.id}`) Delete
+    div.pageParentDiv
+     div.sideBarSection
+      div.sideBarHeadSec
+        | KT Telematic 
+      div.sideBarListDiv 
+       ul.sidebarListUlstyle
+        li: a(href='/').NonActiveList Home
+        li: a(href='/assets').NonActiveList Asset
+        li: a(href='/assetCategories').activeList Asset Category
+        li: a(href='/assetHistory').NonActiveList Asset History
+        li: a(href='/employees').NonActiveList Employee
+        li: a(href='/assets/issue').NonActiveList Issue Asset
+        li: a(href='/assets/return').NonActiveList Return Asset
+        li: a(href='/assets/scrap').NonActiveList Scrap Asset
+     div.pageRenderSection
 
-    script(src='https://code.jquery.com/jquery-3.6.0.min.js')
-    script(src='https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js')
-    script.
-      $(document).ready(function() {
-        $('#categoryTable').DataTable(); // Initialize DataTable for asset categories table
-      });
+      div.addBtnSection
+        a(href="/assetCategories/add").AddBtn Add Asset Category
+      div
+        table.table.table-bordered#categoryTable
+          thead
+            tr
+              th ID
+              th Name
+              th Actions
+          tbody
+            each assetCategory in assetCategories
+              tr
+                td= assetCategory.id
+                td= assetCategory.categoryName
+                td.ActionSection
+                    a.EditBtn(href=`/assetCategories/edit/${assetCategory.id}`) Edit
+                    a.DeleteBtn(href=`/assetCategories/delete/${assetCategory.id}`) Delete
+                
+        script(src='https://code.jquery.com/jquery-3.6.0.min.js')
+        script(src='https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js')
+        script.
+          $(document).ready(function() {
+            $('#categoryTable').DataTable(); // Initialize DataTable for asset categories table
+          });
