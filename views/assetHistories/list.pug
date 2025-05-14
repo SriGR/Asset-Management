@@ -4,17 +4,28 @@ html
     title Asset History Viewer
     link(rel='stylesheet', href='/styles/style.css')
   body
-    .container
-  a(href='/').btn.btn-secondary Back to Home 
-  h1 View Asset History
-  div.Flex-center
-   div
-      form(action='/assetHistory/view' method='POST')
-        .form-group
-          label(for='assetId') Select Asset
-          select(name='assetId' required)
-            each asset in assets
-              option(value=asset.id)= `${asset.assetName} (${asset.assetNumber})`
+    div.pageParentDiv
+     div.sideBarSection
+      div.sideBarHeadSec
+        | KT Telematic 
+      div.sideBarListDiv 
+       ul.sidebarListUlstyle
+        li: a(href='/').NonActiveList Home
+        li: a(href='/assets').NonActiveList Asset
+        li: a(href='/assetCategories').NonActiveList Asset Category
+        li: a(href='/assetHistory').activeList Asset History
+        li: a(href='/employees').NonActiveList Employee
+        li: a(href='/assets/issue').NonActiveList Issue Asset
+        li: a(href='/assets/return').NonActiveList Return Asset
+        li: a(href='/assets/scrap').NonActiveList Scrap Asset
+     div.pageRenderSection
+        div
+            form(action='/assetHistory/view' method='POST')
+              .form-group
+                label(for='assetId') Select Asset
+                select(name='assetId' required)
+                  each asset in assets
+                    option(value=asset.id)= `${asset.assetName} (${asset.assetNumber})`
 
-        button(type='submit' class='btn btn-primary') View History
+              button(type='submit' class='ViewHistoryBtn') View History
 

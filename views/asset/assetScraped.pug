@@ -4,16 +4,28 @@ html
     title Scrap Asset
     link(rel='stylesheet', href='/styles/style.css')
   body
-    h1 Scrap Asset
-    
-    form(action='/assets/scrap' method='POST')
+    div.pageParentDiv
+     div.sideBarSection
+      div.sideBarHeadSec
+        | KT Telematic 
+      div.sideBarListDiv 
+       ul.sidebarListUlstyle
+        li: a(href='/').NonActiveList Home
+        li: a(href='/assets').NonActiveList Asset
+        li: a(href='/assetCategories').NonActiveList Asset Category
+        li: a(href='/assetHistory').NonActiveList Asset History
+        li: a(href='/employees').NonActiveList Employee
+        li: a(href='/assets/issue').NonActiveList Issue Asset
+        li: a(href='/assets/return').NonActiveList Return Asset
+        li: a(href='/assets/scrap').activeList Scrap Asset
+     div.pageRenderSection
       div
-        label(for='assetId') Select Asset to Scrap
-        select(name='assetId' id='assetId')
-          each asset in assets
-            option(value=asset.id)= asset.assetName + ' (' + asset.assetNumber + ')'
+        form(action='/assets/scrap' method='POST')
+          div
+            label(for='assetId') Select Asset to Scrap
+            select(name='assetId' id='assetId')
+              each asset in assets
+                option(value=asset.id)= asset.assetName + ' (' + asset.assetNumber + ')'
 
-      div
-        button(type='submit') Scrap Asset
-
-    a(href='/assets').btn.btn-secondary Back to List
+          div
+            button(type='submit' class='ViewHistoryBtn') Scrap Asset

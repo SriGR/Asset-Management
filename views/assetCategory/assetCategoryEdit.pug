@@ -4,11 +4,27 @@ html
     title Edit Asset Category
     link(rel='stylesheet', href='/styles/style.css')
   body
-    h1 Edit Asset Category
-    form(action=`/assetCategories/edit/${assetCategory.id}`, method='POST')
+    div.pageParentDiv
+     div.sideBarSection
+      div.sideBarHeadSec
+        | KT Telematic 
+      div.sideBarListDiv 
+       ul.sidebarListUlstyle
+        li: a(href='/').NonActiveList Home
+        li: a(href='/assets').NonActiveList Asset
+        li: a(href='/assetCategories').activeList Asset Category
+        li: a(href='/assetHistory').NonActiveList Asset History
+        li: a(href='/employees').NonActiveList Employee
+        li: a(href='/assets/issue').NonActiveList Issue Asset
+        li: a(href='/assets/return').NonActiveList Return Asset
+        li: a(href='/assets/scrap').NonActiveList Scrap Asset
+     div.pageRenderSection
       div
-        label(for='categoryName') Category Name:
-        input(type='text', name='categoryName', id='name', value=assetCategory.categoryName, required=true)
-      div
-        button(type='submit').btn.btn-primary Update Category
-    a(href='/assetCategories').btn.btn-secondary Go Back
+        div.ViewBtnSet
+         a(href='/assetCategories' class="BackBtn") Back
+        form(action=`/assetCategories/edit/${assetCategory.id}`, method='POST')
+          div
+            label(for='categoryName') Category Name:
+            input(type='text', name='categoryName', id='name', value=assetCategory.categoryName, required=true)
+          div
+            button(type='submit' class='ViewHistoryBtn') Update Asset Category

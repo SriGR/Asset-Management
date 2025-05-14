@@ -4,19 +4,33 @@ html
     title Issue Asset
     link(rel='stylesheet', href='/styles/style.css')
   body
-    h1 Issue Asset
-    form(action='/assets/issue' method='POST')
-      div.form-group
-        label(for='assetId') Asset
-        select(name='assetId' required)
-          each asset in availableAssets
-            option(value=asset.id) #{asset.assetName} - #{asset.assetNumber}
-      
-      div.form-group
-        label(for='employeeId') Employee
-        select(name='employeeId' required)
-          each employee in employees
-            option(value=employee.id) #{employee.employeeName}
+  div.pageParentDiv
+     div.sideBarSection
+      div.sideBarHeadSec
+        | KT Telematic 
+      div.sideBarListDiv 
+       ul.sidebarListUlstyle
+        li: a(href='/').NonActiveList Home
+        li: a(href='/assets').NonActiveList Asset
+        li: a(href='/assetCategories').NonActiveList Asset Category
+        li: a(href='/assetHistory').NonActiveList Asset History
+        li: a(href='/employees').NonActiveList Employee
+        li: a(href='/assets/issue').activeList Issue Asset
+        li: a(href='/assets/return').NonActiveList Return Asset
+        li: a(href='/assets/scrap').NonActiveList Scrap Asset
+     div.pageRenderSection
+      div
+      form(action='/assets/issue' method='POST')
+        div.form-group
+          label(for='assetId') Asset
+          select(name='assetId' required)
+            each asset in availableAssets
+              option(value=asset.id) #{asset.assetName} - #{asset.assetNumber}
+        
+        div.form-group
+          label(for='employeeId') Employee
+          select(name='employeeId' required)
+            each employee in employees
+              option(value=employee.id) #{employee.employeeName}
 
-      button(type='submit') Issue Asset
-    a(href='/assets').btn.btn-secondary Back to List
+        button(type='submit' class='ViewHistoryBtn') Issue Asset

@@ -5,12 +5,29 @@ head
   link(rel='stylesheet', href='/styles/style.css')
 
   body
-    h1 Update Employee
-  form(method="post", action=`/employees/edit/${employee.id}`)
-    div.form-group
-      label Name
-      input.form-control(type="text", name="employeeName", value=employee.employeeName, required)
-    div.form-group
-      label Branch
-      input.form-control(type="text", name="branch", value=employee.branch)
-    button.btn.btn-success(type="submit") Update
+   div.pageParentDiv
+     div.sideBarSection
+      div.sideBarHeadSec
+        | KT Telematic 
+      div.sideBarListDiv 
+       ul.sidebarListUlstyle
+        li: a(href='/').NonActiveList Home
+        li: a(href='/assets').NonActiveList Asset
+        li: a(href='/assetCategories').NonActiveList Asset Category
+        li: a(href='/assetHistory').NonActiveList Asset History
+        li: a(href='/employees').activeList Employee
+        li: a(href='/assets/issue').NonActiveList Issue Asset
+        li: a(href='/assets/return').NonActiveList Return Asset
+        li: a(href='/assets/scrap').NonActiveList Scrap Asset
+     div.pageRenderSection
+      div
+        div.ViewBtnSet
+          a(href='/employees' class="BackBtn") Back
+      form(method="post", action=`/employees/edit/${employee.id}`)
+        div.form-group
+          label Name
+          input.form-control(type="text", name="employeeName", value=employee.employeeName, required)
+        div.form-group
+          label Branch
+          input.form-control(type="text", name="branch", value=employee.branch)
+          button(type="submit" class='ViewHistoryBtn') Update
